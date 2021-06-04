@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 from itertools import chain, combinations, permutations
 from scipy.special import comb
+import argparse
+
+parser = argparse.ArgumentParser(description='',formatter_class=argparse.RawTextHelpFormatter)
+parser.add_argument('-k','--keys',type=int,default=5)
+args=parser.parse_args()
 
 def accel_asc(n):
 	a = [0 for i in range(n + 1)]
@@ -41,7 +46,7 @@ def num_combos(num_keypad_buttons : int, press_sequence : tuple):
 	return ret
 
 # Number of buttons on the keypad
-NUM_BUTTONS = 5
+NUM_BUTTONS = args.keys
 
 partitions = list(accel_asc(NUM_BUTTONS))  # Convert to list, just so we can view it
 
