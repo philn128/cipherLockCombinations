@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from itertools import chain, combinations, permutations
 from scipy.special import comb
 
