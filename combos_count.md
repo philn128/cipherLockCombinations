@@ -22,7 +22,7 @@ $$D(2)=\left\{\begin{array}{c} (\{1\},\{2\}) \\ (\{2\},\{1\}) \\ (\{1,2\}) \end{
 
 # Relationship between |$C(n)$| and $|D(n)|$ cardinality
 
-The cardinality (size) of $|C(n)|$ is $2|D(n)|-1$ because
+The [cardinality](https://en.wikipedia.org/wiki/Cardinality) (size) of $|C(n)|$ is $2|D(n)|-1$ because
 any sequence $(a_1,\ldots,a_m)$ in $D(n)$ of length 2 or more
 can be truncated to $(a_1,\ldots,a_{m-1})$ to obtain
 a sequence in $C(n)$ but not in $D(n)$.
@@ -34,17 +34,19 @@ $$|C(2)|=5=2 \cdot |D(2)|-1=2\cdot 3-1=5$$
 * We have $n$ button presses in each $D(n)$. $C(n)$ has more sequences because we don't need to use all the buttons.
 
 * Truncating $(\{2\},\{1\})$ gives $\{2\}$ and truncating $(\{1\},\{2\})$ gives $\{1\}$
+	* If we "truncated" all the way to $a_m$ instead of $a_{m-1}$ we wouldn't be truncating
 
-
-# Converse
+## Converse
 
 Conversely, any sequence $(b_1,\ldots,b_l)$ in $C(n)$ but not $D(n)$
 has a unique extension $(b_1,\ldots,b_{l+1})$ of length $l+1$
 that is in $D(n)$.
 
+# Finding $|D(n)|$ cardinality
+
 Let $D(n,k)$ be the set of all sequences $(a_1,\ldots,a_k)$
 of $k$ disjoint nonempty sets with union $\{1,\ldots,n\}$.
-Then the cardinality $|D(n)|$ is $\sum_{k=1}^n|D(n,k)|$.
+Then the cardinality $|D(n)|$ is $\displaystyle \sum_{k=1}^n|D(n,k)|$.
 
 The cardinality $|D(n,k)|$ satisfies the recursion
 $$|D(n,k)| = k(|D(n-1,k)|+|D(n-1,k-1)|)$$ because if $a_1,\ldots,a_k$
