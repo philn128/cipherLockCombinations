@@ -4,12 +4,15 @@ import argparse
 
 parser = argparse.ArgumentParser(description='',formatter_class=argparse.RawTextHelpFormatter)
 parser.add_argument('-n','--attempts', help='number of random attempts to try',type=float,default=10000)
+parser.add_argument('-k','--keys',type=int,default=5)
 args=parser.parse_args()
+
+keys=args.keys
 
 attempts=set()
 
 for i in range(int(args.attempts)):
-	v=[1,2,3,4,5]
+	v=list(range(1,keys+1))
 	np.random.shuffle(v)
 	v=v[:np.random.randint(1,len(v)+1)]
 	string=''
