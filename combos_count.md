@@ -27,26 +27,58 @@ any sequence $(a_1,\ldots,a_m)$ in $D(n)$ of length 2 or more
 can be truncated to $(a_1,\ldots,a_{m-1})$ to obtain
 a sequence in $C(n)$ but not in $D(n)$.
 
+Conversely, any sequence $(b_1,\ldots,b_l)$ in $C(n)$ but not $D(n)$
+has a unique extension $(b_1,\ldots,b_{l+1})$ of length $l+1$
+that is in $D(n)$.
+
+In other words, if we have a set of sequences $T(n)$ where $T(n)$ is the is a set where the last element of each sequence in $D(n)$ has been truncated then
+
+$$T(n) \cup D(n) = C(n) \cup \{\emptyset\}$$
+
 ## example
+
+### cardinality
 
 $$|C(2)|=5=2 \cdot |D(2)|-1=2\cdot 3-1=5$$
 
 * We have $n$ button presses in each $D(n)$. $C(n)$ has more sequences because we don't need to use all the buttons.
 
+### truncating
+
 * Truncating $(\{2\},\{1\})$ gives $\{2\}$ and truncating $(\{1\},\{2\})$ gives $\{1\}$
 	* If we "truncated" all the way to $a_m$ instead of $a_{m-1}$ we wouldn't be truncating
 
-## Converse
+$$T(2) = \left\{\begin{array}{c} (\{1\}) \\ (\{2\}) \\ (\{\}) \end{array} \right\}$$
 
-Conversely, any sequence $(b_1,\ldots,b_l)$ in $C(n)$ but not $D(n)$
-has a unique extension $(b_1,\ldots,b_{l+1})$ of length $l+1$
-that is in $D(n)$.
+> note that truncating $\{1,2\}=\{\}=\emptyset$
+
+$$T(2) \cup D(n) = \left\{\begin{array}{c} (\{1\}) \\ (\{2\}) \\ (\{\}) \end{array} \right\} \cup \left\{\begin{array}{c} (\{1\},\{2\}) \\ (\{2\},\{1\}) \\ (\{1,2\}) \end{array} \right\} = \left\{\begin{array}{c} (\{1\}) \\ (\{2\}) \\ (\{\}) \\ (\{1\},\{2\}) \\ (\{2\},\{1\}) \\ (\{1,2\}) \end{array} \right\} = C(n) \cup \{\emptyset\}$$
+
+$$\therefore T(2) \cup D(n) \backslash \{\emptyset\} = C(2)$$
+
+> The backslash symbol ($\backslash$) denotes [set difference](https://en.wikipedia.org/wiki/Complement_(set_theory)#Relative_complement). For example, $\{1,2\} \backslash \{1\} = \{2\}$
 
 # Finding $|D(n)|$ cardinality
+
+## splitting $|D(n)$ into subsets with fixed sequence length 
 
 Let $D(n,k)$ be the set of all sequences $(a_1,\ldots,a_k)$
 of $k$ disjoint nonempty sets with union $\{1,\ldots,n\}$.
 Then the cardinality $|D(n)|$ is $\displaystyle \sum_{k=1}^n|D(n,k)|$.
+
+### example
+
+Each sequence of $D(n,k)$ is of length $k$. We're effectivley splitting $D(n)$ into various subsets where the sequence lengths are the same for each subset
+
+$$\bigcup_{k=1}^n D(n,k) = D(n)$$
+
+$$D(2,1) = \left\{\begin{array}{c} (\{1,2\}) \end{array} \right\}$$
+
+$$D(2,2) = \left\{\begin{array}{c} (\{1\},\{2\}) \\ (\{2\},\{1\}) \end{array} \right\}$$
+
+> Although $\{1,2\}$ is of length 2 the sequence $(\{1,2\})$ is of length 1
+
+## recursion
 
 The cardinality $|D(n,k)|$ satisfies the recursion
 $$|D(n,k)| = k(|D(n-1,k)|+|D(n-1,k-1)|)$$ because if $a_1,\ldots,a_k$
